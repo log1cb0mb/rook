@@ -110,9 +110,15 @@ func (s *UpgradeSuite) TestUpgradeRookToMaster() {
 		cleanupFilesystemConsumer(s.helper, s.k8sh, s.Suite, s.namespace, filePodName)
 		cleanupFilesystem(s.helper, s.k8sh, s.Suite, s.namespace, filesystemName)
 		_ = s.helper.ObjectUserClient.Delete(s.namespace, objectUserID)
+<<<<<<< HEAD
 		_ = s.helper.BucketClient.DeleteObc(obcName, bucketStorageClassName, bucketPrefix, maxObject, false)
 		_ = s.helper.BucketClient.DeleteBucketStorageClass(s.namespace, objectStoreName, bucketStorageClassName, "Delete", region)
 		objectStoreCleanUp(s.Suite, s.helper, s.k8sh, s.settings.Namespace, objectStoreName)
+=======
+		_ = s.helper.BucketClient.DeleteObc(obcName, installer.ObjectStoreSCName, bucketPrefix, maxObject, false)
+		_ = s.helper.BucketClient.DeleteBucketStorageClass(s.namespace, installer.ObjectStoreName, installer.ObjectStoreSCName, "Delete")
+		objectStoreCleanUp(s.Suite, s.helper, s.k8sh, s.settings.Namespace, installer.ObjectStoreName)
+>>>>>>> fc2b8012c (object: use us-east-1 for aws go lang sdk)
 	}()
 
 	//
@@ -169,9 +175,15 @@ func (s *UpgradeSuite) TestUpgradeCephToOctopusDevel() {
 		cleanupFilesystemConsumer(s.helper, s.k8sh, s.Suite, s.namespace, filePodName)
 		cleanupFilesystem(s.helper, s.k8sh, s.Suite, s.namespace, filesystemName)
 		_ = s.helper.ObjectUserClient.Delete(s.namespace, objectUserID)
+<<<<<<< HEAD
 		_ = s.helper.BucketClient.DeleteObc(obcName, bucketStorageClassName, bucketPrefix, maxObject, false)
 		_ = s.helper.BucketClient.DeleteBucketStorageClass(s.namespace, objectStoreName, bucketStorageClassName, "Delete", region)
 		objectStoreCleanUp(s.Suite, s.helper, s.k8sh, s.settings.Namespace, objectStoreName)
+=======
+		_ = s.helper.BucketClient.DeleteObc(obcName, installer.ObjectStoreSCName, bucketPrefix, maxObject, false)
+		_ = s.helper.BucketClient.DeleteBucketStorageClass(s.namespace, installer.ObjectStoreName, installer.ObjectStoreName, "Delete")
+		objectStoreCleanUp(s.Suite, s.helper, s.k8sh, s.settings.Namespace, installer.ObjectStoreName)
+>>>>>>> fc2b8012c (object: use us-east-1 for aws go lang sdk)
 	}()
 
 	//
@@ -202,9 +214,15 @@ func (s *UpgradeSuite) TestUpgradeCephToPacificDevel() {
 		cleanupFilesystemConsumer(s.helper, s.k8sh, s.Suite, s.namespace, filePodName)
 		cleanupFilesystem(s.helper, s.k8sh, s.Suite, s.namespace, filesystemName)
 		_ = s.helper.ObjectUserClient.Delete(s.namespace, objectUserID)
+<<<<<<< HEAD
 		_ = s.helper.BucketClient.DeleteObc(obcName, bucketStorageClassName, bucketPrefix, maxObject, false)
 		_ = s.helper.BucketClient.DeleteBucketStorageClass(s.namespace, objectStoreName, bucketStorageClassName, "Delete", region)
 		objectStoreCleanUp(s.Suite, s.helper, s.k8sh, s.settings.Namespace, objectStoreName)
+=======
+		_ = s.helper.BucketClient.DeleteObc(obcName, installer.ObjectStoreSCName, bucketPrefix, maxObject, false)
+		_ = s.helper.BucketClient.DeleteBucketStorageClass(s.namespace, installer.ObjectStoreName, installer.ObjectStoreSCName, "Delete")
+		objectStoreCleanUp(s.Suite, s.helper, s.k8sh, s.settings.Namespace, installer.ObjectStoreName)
+>>>>>>> fc2b8012c (object: use us-east-1 for aws go lang sdk)
 	}()
 
 	//
@@ -251,7 +269,11 @@ func (s *UpgradeSuite) deployClusterforUpgrade(objectStoreName, objectUserID, me
 	createCephObjectUser(s.Suite, s.helper, s.k8sh, s.namespace, objectStoreName, objectUserID, false, false)
 
 	logger.Info("Initializing object bucket claim before the upgrade")
+<<<<<<< HEAD
 	cobErr := s.helper.BucketClient.CreateBucketStorageClass(s.namespace, objectStoreName, bucketStorageClassName, "Delete", region)
+=======
+	cobErr := s.helper.BucketClient.CreateBucketStorageClass(s.namespace, installer.ObjectStoreName, installer.ObjectStoreName, "Delete")
+>>>>>>> fc2b8012c (object: use us-east-1 for aws go lang sdk)
 	require.Nil(s.T(), cobErr)
 	cobcErr := s.helper.BucketClient.CreateObc(obcName, bucketStorageClassName, bucketPrefix, maxObject, false)
 	require.Nil(s.T(), cobcErr)
